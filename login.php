@@ -41,11 +41,10 @@
         if (isset($_POST['login-submit']))
         {
             //change database password
-<<<<<<< HEAD
+
             $Connect = new Connect("localhost","root","root","bos","werknemers");
-=======
             $Connect = new Connect("localhost","root","","bos","werknemers");
->>>>>>> origin/master
+
             $email = $Connect->link->real_escape_string($_POST['email']);
             $pass = $Connect->link->real_escape_string($_POST['password']);
             $password = $pass; //hash ("sha256", $pass);
@@ -68,11 +67,8 @@
                 else
                 {
 
-<<<<<<< HEAD
                     $Connect = new Connect("localhost","root","root","bos","bedrijven");
-=======
                     $Connect = new Connect("localhost","root","","bos","bedrijven");
->>>>>>> origin/master
                     $query = "SELECT id, mail, pass FROM bedrijven WHERE mail = '$email' AND pass = '$pass';";
                     $result = $Connect->link->query($query);
                     while($row = $result->fetch_array(MYSQLI_ASSOC))
