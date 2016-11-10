@@ -273,3 +273,10 @@ a {
 .margin-top {
 	margin-top: 75px;
 }
+.full-width {
+    width: 100%;
+    margin-bottom: 5px !important;
+}
+.centre {
+    text-align: center;
+}

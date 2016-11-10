@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><?php error_reporting(2);?>
 <html lang="en">
 
 <head>
@@ -60,18 +60,17 @@
 		$wnemer = 1;
 		$vaca = $_GET['vaca_id'];
 		$motiv = $_GET['motivtext'];
+		$motivcheck = $_GET['motiv'];
 		if ($soort == 'werknemer') {
-			if ($motiv == True) {
-				
+			if ($motivcheck == True && $motiv != '') {
 				$queryUpdate = "UPDATE matches SET motivatie = '$motiv', progress = '2' WHERE wnemer_id = $wnemer AND vaca_id = $vaca";
 				if ($this -> conn -> query($queryUpdate)) {
 					header('location: dashboard.php');
 				}
 			}
 			?>
-		<div class="container">
-		  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Goedgekeurd</button>
-		  <div id="demo" class="collapse">
+		  <button type="button" class="btn btn-info full-width" data-toggle="collapse" data-target="#demo"><h3>Goedgekeurd</h3></button>
+		  <div id="demo" class="collapse centre">
 			<?php
 			if ($motiv == True) 
 			{	
@@ -88,6 +87,10 @@
 					array_push($motivaties, "$vaca_id[1]");
 					array_push($vacaturen, "$vaca_id[0]");
 				}
+				if (empty($vacaturen))
+				{
+					echo "Er zijn nog geen goedgekeurd";
+				}
 			}
 			else {
 				echo "Couldn't get data @ step 1";
@@ -95,8 +98,8 @@
 			foreach (array_combine($vacaturen, $motivaties) AS $id => $motivatie) {
 				$query = $this -> conn -> query("SELECT id FROM vacaturen WHERE id = $id");
 				while ($row = mysqli_fetch_row($query)) {
-					echo "<p><h4>Vacatuur " . $row['0'] . "</h4></p>";
-					echo "<p><h4>Motivatie: </h4> $motivatie </p>";
+					echo "<p><h3><b>Vacatuur " . $row['0'] . "</b></h4></p>";
+					echo "<p><h4><b>Motivatie: </b><br /> $motivatie </h4></p>";
 				}
 				
 				$totcomps = 0;
@@ -115,16 +118,17 @@
 			
 				$compsaantal = 0;
 				$idcomps = array();
-				echo "<p><h4>Gevraagde competenties($totcomps): </h4>";
+				echo "<p><h4><b>Gevraagde competenties($totcomps): </b>";
 				foreach ($comps AS $id) {
 					$query = $this -> conn -> query("SELECT * FROM competenties WHERE id = $id");
 					while ($row = mysqli_fetch_row($query)) {
 						$compsaantal ++;
 						array_push($idcomps, "$row[0]");
-						echo "-> $row[1]";
+						echo "<br />- $row[1]";
 					}
-				echo "</p>";
-			}						
+				}	
+				echo "</h4></p>";
+				
 			$jouwcompsaantal = 0;
 			$jouwcomps = array();
 				foreach ($idcomps AS $jouwcomp) {
@@ -135,29 +139,27 @@
 					}
 				}
 				
-				echo "<p><h4>Gematchde competenties($jouwcompsaantal): </h4>";
+				echo "<p><h4><b>Gematchde competenties($jouwcompsaantal): </b>";
 				foreach ($jouwcomps AS $id) {
 					$query = $this -> conn -> query("SELECT * FROM competenties WHERE id = $id");
 					while ($row = mysqli_fetch_row($query)) {
-						echo "-> $row[1]";
+						echo "<br />- $row[1]";
 					}
 				}
-				echo "</p>";
+				echo "</h4></p>";
 				
-				echo "<p><h4>Aantal % gemeen: </h4>";
+				echo "<p><h4><b>Aantal % gemeen: </b>";
 				$percent = $jouwcompsaantal / $compsaantal * 100;
-				echo "$percent%</p>";
+				echo "<br />- $percent%</h4></p>";
 			}
 
 			?>					
 			</div>
-		</div>
 		
 		
 		
-		<div class="container">
-		  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo2">In behandeling</button>
-		  <div id="demo2" class="collapse">
+		  <button type="button" class="btn btn-info full-width" data-toggle="collapse" data-target="#demo2"><h3>In behandeling</h3></button>
+		  <div id="demo2" class="collapse centre">
 			<?php
 			if ($motiv == True) 
 			{	
@@ -174,6 +176,11 @@
 					array_push($motivaties, "$vaca_id[1]");
 					array_push($vacaturen, "$vaca_id[0]");
 				}
+				if (empty($vacaturen))
+				{
+					echo "Er zijn nog geen in behandeling";
+				}
+
 			}
 			else {
 				echo "Couldn't get data @ step 1";
@@ -181,8 +188,8 @@
 			foreach (array_combine($vacaturen, $motivaties) AS $id => $motivatie) {
 				$query = $this -> conn -> query("SELECT id FROM vacaturen WHERE id = $id");
 				while ($row = mysqli_fetch_row($query)) {
-					echo "<p><h4>Vacatuur " . $row['0'] . "</h4></p>";
-					echo "<p><h4>Motivatie: </h4> $motivatie </p>";
+					echo "<p><h3><b>Vacatuur " . $row['0'] . "</b></h3></p>";
+					echo "<p><h4><b>Motivatie: </b><br /> $motivatie </h4></p>";
 				}
 				
 				$totcomps = 0;
@@ -201,18 +208,18 @@
 			
 				$compsaantal = 0;
 				$idcomps = array();
-				echo "<p><h4>Gevraagde competenties($totcomps): </h4>";
+				echo "<p><h4><b>Gevraagde competenties($totcomps): </b>";
 				foreach ($comps AS $id) {
 					$query = $this -> conn -> query("SELECT * FROM competenties WHERE id = $id");
 					while ($row = mysqli_fetch_row($query)) {
 						$compsaantal ++;
 						array_push($idcomps, "$row[0]");
-						echo "-> $row[1]";
-					}
-				echo "</p>";
-			}						
-			$jouwcompsaantal = 0;
-			$jouwcomps = array();
+						echo "<br />- $row[1]";
+					}	
+				}	
+				echo "</h4></p>";				
+				$jouwcompsaantal = 0;
+				$jouwcomps = array();
 				foreach ($idcomps AS $jouwcomp) {
 					$query = $this -> conn -> query("SELECT * FROM wnemer_comp WHERE comp_id = $jouwcomp AND wnemer_id = $wnemer");
 					while ($row = mysqli_fetch_row($query)) {
@@ -221,26 +228,24 @@
 					}
 				}
 				
-				echo "<p><h4>Gematchde competenties($jouwcompsaantal): </h4>";
+				echo "<p><h4><b>Gematchde competenties($jouwcompsaantal): </b>";
 				foreach ($jouwcomps AS $id) {
 					$query = $this -> conn -> query("SELECT * FROM competenties WHERE id = $id");
 					while ($row = mysqli_fetch_row($query)) {
-						echo "-> $row[1]";
+						echo "<br />- $row[1]";
 					}
 				}
-				echo "</p>";
+				echo "</h4></p>";
 				
-				echo "<p><h4>Aantal % gemeen: </h4>";
+				echo "<p><h4><b>Aantal % gemeen: </b>";
 				$percent = $jouwcompsaantal / $compsaantal * 100;
-				echo "$percent%</p>";
+				echo "<br />-$percent%</h4></p>";
 			}
 
 			?>					
 			</div>
-		</div>
-		<div class="container">
-		  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo3">Geliked</button>
-		  <div id="demo3" class="collapse">
+		  <button type="button" class="btn btn-info full-width" data-toggle="collapse" data-target="#demo3"><h3>Geliked</h3></button>
+		  <div id="demo3" class="collapse centre">
 		  <?php
 			$vacaturen = array();
 			if ($query = $this -> conn -> query("SELECT vaca_id FROM matches WHERE wnemer_id = $wnemer AND progress = 1")) {
@@ -248,6 +253,10 @@
 					foreach ($vaca_id AS $id) {
 						array_push($vacaturen, "$id");
 					}
+				}
+				if (empty($vacaturen))
+				{
+					echo "Er zijn nog geen in behandeling";
 				}
 			}
 			else {
@@ -257,7 +266,7 @@
 			foreach ($vacaturen AS $id) {
 				$query = $this -> conn -> query("SELECT id FROM vacaturen WHERE id = $id");
 				while ($row = mysqli_fetch_row($query)) {
-					echo "<h4><p>Vacatuur " . $row['0'] . "</h4></p>";
+					echo "<p><h3><b>Vacatuur " . $row['0'] . "</b></h3></p>";
 					$vacature_id = $row[0];
 				}
 				
@@ -277,16 +286,16 @@
 			
 			$compsaantal = 0;
 			$idcomps = array();
-			echo "<p><h4>Gevraagde competenties($totcomps): </h4>";
+			echo "<p><h4><b>Gevraagde competenties($totcomps): </b>";
 			foreach ($comps AS $id) {
 				$query = $this -> conn -> query("SELECT * FROM competenties WHERE id = $id");
 				while ($row = mysqli_fetch_row($query)) {
 					$compsaantal ++;
 					array_push($idcomps, "$row[0]");
-					echo "-> $row[1] <br />";
+					echo "<br />- $row[1]";
 				}
 			}
-			echo "</p>";
+			echo "</h4></p>";
 			
 			$jouwcompsaantal = 0;
 			$jouwcomps = array();
@@ -298,19 +307,20 @@
 				}
 			}
 			
-			echo "<p><h4>Jouw gematchde competenties($jouwcompsaantal): </h4>";
+			$jouwcompsnaam = array();
+			echo "<p><h4><b>Jouw gematchte competenties($jouwcompsaantal): </b>";
 			foreach ($jouwcomps AS $id) {
 				$query = $this -> conn -> query("SELECT * FROM competenties WHERE id = $id");
 				while ($row = mysqli_fetch_row($query)) {
-					echo "-> " . $row[1]. "<br/>";
+					echo "<br />- " . $row[1];
+					array_push($jouwcompsnaam, $row[1]);
 				}
-				
 			}
-			echo "</p>";
+			echo "</h4></p>";
 			
-			echo "<p><h4>Aantal % gemeen: </h4>";
+			echo "<p><h4><b>Aantal % gemeen: </b>";
 			$percent = $jouwcompsaantal / $compsaantal * 100;
-			echo "$percent% </p>";
+			echo "<br />- $percent% </h4></p>";
 			
 			
 			
@@ -322,11 +332,19 @@
 			  <!-- Modal content -->
 			  <div class="modal-content">
 				<span class="close">x</span>
-				<p>Some text in the Modal..</p>
+				<h3><b>Gematchte competenties:</b>
+				<p>
+				<?php
+				foreach ($jouwcompsnaam AS $naam) {
+					echo "- $naam <br />";
+				}
+				?>
+				</h3></p>
+				<p><h4><b>Schrijf hier je motivatie: </b></h4></p>
 				<form action = '' method = 'get'>
 					<input type = 'hidden' name = 'motiv' value = 'True'>
 					<input type = 'hidden' name = 'vaca_id' value = '<?php echo $vacature_id; ?>'>
-					<p><textarea name ='motivtext'  rows='5'></textarea></p>
+					<p><textarea name ='motivtext'  rows='5' cols='30%'></textarea></p>
 					<input type = 'submit' value = 'Voeg motivatie toe'>
 				</form>
 			  </div>
@@ -341,7 +359,6 @@
 				
 
 			  </div>
-			</div>
 			<?php
 			}
 			?>

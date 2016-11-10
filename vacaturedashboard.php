@@ -52,18 +52,15 @@
             $classDatabase = new database();
             $classDatabase->databaseConnect();
 
-            if (isset($_POST['myVerwijderen']))
+            if (isset($_POST['verwijderID']))
             {
               $succesfull = $classDatabase->deleteVacatureData("vacaturen", $_POST['verwijderID']);
-              // if ($succesfull)
-              // {
-              //   echo "Deleted";
-              // }
-              // else
-              // {
-              //   echo "nothing";
-              // }
             }
+
+            // if (isset($_POST['editID']))
+            // {
+            //   echo $_POST['editID'];
+            // }
 
             $results = $classDatabase->retrieveVacatureData("vacaturen", "2");
             $countRows = $results->num_rows;
@@ -94,13 +91,18 @@
                         </h2>
                       </td>
                       <td class="col-sm-1">
-                        <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                        <!-- <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit</a> -->
+                        <form action='vacaturetoevoegen.php' method='post'>
+                          <input type="hidden" name="editID" value="<?php echo $row['id']; ?>">
+                          <label for="myEditen<?php echo $row['id']; ?>" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i> Edit</label>
+                          <input id="myEditen<?php echo $row['id']; ?>" name="myEditen<?php echo $row['id']; ?>" type="submit" value="" class="hidden" />
+                        </form>
                       </td>
                       <td class="col-sm-1">
                         <form action='' method='post' onsubmit="return confirm('Ben je zeker dat je deze vacature wil verwijderen?');">
                           <input type="hidden" name="verwijderID" value="<?php echo $row['id']; ?>">
-                          <label for="myVerwijderen" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Verwijderen</label>
-                          <input id="myVerwijderen" name="myVerwijderen" type="submit" value="" class="hidden" />
+                          <label for="myVerwijderen<?php echo $row['id']; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Verwijderen</label>
+                          <input id="myVerwijderen<?php echo $row['id']; ?>" name="myVerwijderen<?php echo $row['id']; ?>" type="submit" value="" class="hidden" />
                         </form>
                       </td>
                     </tr>

@@ -16,10 +16,6 @@
       <li><a href="index.php">Home</a></li>
       <li><a href="">Matching</a></li>
       <li><a href="dashboard.php">Dashboard</a></li>
-<<<<<<< HEAD
-      <li><a href="#">Account</a></li>
-      <li><a href="#">Instellingen</a></li>
-=======
       <?php
         if ($userBoolean)
         {
@@ -44,7 +40,6 @@
         }
         ?>
         <li><a href="login.php">Loguit</a></li>
->>>>>>> origin/master
     </ul>
   </div>
 </div>
