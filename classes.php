@@ -5,7 +5,7 @@ class database
 	{
 		global $conn;
 
-		$conn = new mysqli("localhost", "root", "", "bos");
+		$conn = new mysqli("localhost", "root", "root", "bos");
 		if ($conn->connect_error) {
 		    ?>
 		    	<form action='Home.php' name="GoBackToHome" method='post'>
@@ -53,7 +53,7 @@ class database
 	{
 		global $conn;
 		
-		$sql = "SELECT * FROM $tabelName WHERE id = $wnemerID";
+		$sql = "SELECT * FROM $tabelName WHERE id = $wnemerID;";
 		$result = $conn->query($sql);
 		
 		return $result;		
@@ -74,4 +74,43 @@ class database
 		//echo $sqlSave;
 		$conn->query($sqlSave);	
 	}
+	function retrieveVacatureData($tabelName, $bedrijfsID)
+	{
+		global $conn;
+		
+		$sql = "SELECT * FROM $tabelName WHERE bedr_id = $bedrijfsID;";
+		$result = $conn->query($sql);
+		
+		return $result;		
+	}
+	function deleteVacatureData($tabelName, $verwijderID)
+	{
+		global $conn;
+		
+		$sql = "DELETE FROM $tabelName WHERE id = $verwijderID;";
+		if ($conn->query($sql))
+		{
+			return true;
+		}
+		else
+		{
+			return false;		
+		}
+	}
+		function saveBedrijvenAccountSettingsData($arraySaveAccountSettingsData)
+		{
+			global $conn;
+			
+			$sqlSave = "UPDATE bedrijven SET ";
+
+	        foreach ($arraySaveAccountSettingsData as $key => $value) 
+	        {
+	    		$sqlSave = $sqlSave . "$key = '$value', ";
+			}
+			
+			$sqlSave = substr($sqlSave, 0, -2);
+			$sqlSave = $sqlSave . " WHERE id = '1';";
+			// echo $sqlSave;
+			$conn->query($sqlSave);	
+		}
 }

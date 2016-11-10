@@ -1,3 +1,4 @@
+<!-- database conectie -->
 <?php
 	/**
 	* fkn nioce script by Jesse Jongsme
@@ -64,11 +65,11 @@
 			$query = "INSERT INTO $this->table VALUES ($sql);";
 			if($this->link->query($query))
 			{
-				echo "successful";
+				return true;
 			}
 			else
 			{
-				return $query;
+				return false;
 			}
 		}
 
