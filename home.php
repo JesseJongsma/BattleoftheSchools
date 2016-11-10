@@ -29,53 +29,44 @@
           <div class="toggle-btn">
           </div>
         </div>
-        <div class="header-text-holder">
           <div class="header-text">
-          </div>
         </div>
       </div>
 
-      <?php include 'menu.php' ;?>
+      <?php include 'menu.php'; ?>
     
     </div>
 
-    <div class="site-wrapper">
+    <div class="container">
 
-      <div class="site-wrapper-inner">
 
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Trots op Groningen!</h3>
+              <h3 class="center">Trots op Groningen!</h3>
               <nav>
-                <ul class="nav masthead-nav">
-                  <li class="page-scroll"><a href="#">Home</a></li>
-                  <li><a class="page-scroll" href="#info">Informatie</a></li>
+                <ul class="center nav masthead-nav">
+                  <li><a class="page-scroll btn" href="#home">Home</a></li>
+                  <li><a class="page-scroll btn" href="#info">Informatie</a></li>
                 </ul>
               </nav>
-            </div>
-          </div>
+            </br>
 
-          <div class="inner cover">
-            <h1 class="cover-heading">Groningen werkt voor jou</h1>
-            <p class="lead">Kom direct in contact met werkgevers &amp; werknemers in heel Groningen</p>
-            <p class="lead">
+
+        
+        
+
+          <div class="cover">
+            <h1 class="center">Groningen werkt voor jou</h1>
+            <p class="lead center">Kom direct in contact met werkgevers &amp; werknemers in heel Groningen</p>
+            <p class="lead center">
               <a href="#" class="btn btn-lg btn-default">Ik ben een <strong>werkgever</strong></a>
               <a href="#" class="btn btn-lg btn-default">Ik ben een <strong>werknemer</strong></a>
             </p>
           </div>
 
-          <div class="mastfoot">
-            <div class="inner">
-              
-            </div>
-          </div>
 
 
 
           <section id="info" class="page-scroll">
-                  <div class="col-sm-6">
+                  <div class="col-sm-6 center">
                     <h3> test Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -84,7 +75,7 @@
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </h3>
                   </div>
 
-                  <div class="col-sm-6">
+                  <div class="col-sm-6 center">
                     <h3> test Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -95,13 +86,6 @@
           </section>
 
 
-
-
-
         </div>
-
-      </div>
-
-    </div>
-
 </body>
+</html>
