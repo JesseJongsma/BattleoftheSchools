@@ -97,4 +97,20 @@ class database
 			return false;		
 		}
 	}
+		function saveBedrijvenAccountSettingsData($arraySaveAccountSettingsData)
+		{
+			global $conn;
+			
+			$sqlSave = "UPDATE bedrijven SET ";
+
+	        foreach ($arraySaveAccountSettingsData as $key => $value) 
+	        {
+	    		$sqlSave = $sqlSave . "$key = '$value', ";
+			}
+			
+			$sqlSave = substr($sqlSave, 0, -2);
+			$sqlSave = $sqlSave . " WHERE id = '1';";
+			// echo $sqlSave;
+			$conn->query($sqlSave);	
+		}
 }
