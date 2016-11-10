@@ -9,7 +9,7 @@
 		private $pass;
 		private $db;
 		private $table;
-		private $link;
+		public $link;
 
 		function __construct($host,$user,$pass,$db,$table)
 		{
@@ -19,26 +19,23 @@
 			$this->db = $db;
 			$this->table = $table;
 
-			echo $host;
-
 			$this->link = new mysqli($host,$user,$pass,$db);
 			if($this->link->connect_errno)
 			{
 				echo $this->link->connect_errno;
 			}
-			else
-			{
-				$this->Retrieve();
-			}
 		}
 
-		private function Retrieve()
+		public function Retrieve()
 		{
-			$results = array();
 			$query = "SELECT * FROM $this->table";
+			$results = array();
+
+			$i = 0;
+			
 			if($result = $this->link->query($query))
 			{
-				while ($row = $result->fetch_assoc())
+				while($row = $result->fetch_array(MYSQLI_BOTH))
 				{
 					foreach ($row as $value)
 					{
@@ -46,8 +43,61 @@
 					}
 				}
 			}
-			print_r($results);
+			return $results;
+		}
+
+		public function Create($array)
+		{
+			$count = 0;
+			$sql = "'', ";
+
+			foreach ($array as $value)
+			{
+				if ($count != 0) {
+					$sql .= ", ";
+				}
+				$count ++;
+
+				$sql .= "$value";
+			}
+
+			$query = "INSERT INTO $this->table VALUES ($sql);";
+			if($this->link->query($query))
+			{
+				echo "successful";
+			}
+			else
+			{
+				echo $query;
+			}
+		}
+
+		public function Update($columns, $expressions)
+		{
+			$count = 0;
+
+			foreach ($array as $value)
+			{
+				if ($count != 0) {
+					$sql .= ", ";
+				}
+				$count ++;
+
+				$sql .= "'$value'";
+			}
+
+			$query = "UPDATE $this->table SET column1 = expression1, column2 = expression2 [WHERE conditions]";
+		}
+
+		public function Delete()
+		{
+
 		}
 	}
+	
+
 	$Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","werknemers");
+	//print_r($Connect->Retrieve());
+	// $array = array("1212", "@.com", "swag");
+	// $Connect->Create($array);	
 ?>
