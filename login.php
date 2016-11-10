@@ -73,31 +73,14 @@
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $pass = $_POST['password'];
-            $confirmPass = $_POST['confirm-password'];
+            $confirm = $_POST['confirm-password'];
 
-            // if()
-            // {
-
-            // }
+            if($pass == $confirm)
+            {
+                
+            }
         }
     ?>
-    <script type="text/javascript">
-        var password = document.getElementById("password").innerHTML;
-        var confirm = document.getElementById("confirm-password").innerHTML;
-        var message = document.getElementById("confirm-password");
-
-
-
-
-        if(password == confirm)
-        {
-            message.innerHTML = message.innerHTML + "YAya";
-        }
-        else
-        {
-            message.innerHTML = message.innerHTML + "ERROR";
-        }
-    </script>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
