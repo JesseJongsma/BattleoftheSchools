@@ -57,7 +57,7 @@
             <h1 class="cover-heading">Groningen werkt voor jou</h1>
             <p class="lead">Kom direct in contact met werkgevers &amp; werknemers in heel Groningen</p>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Ìk ben een <strong>werkgever</strong></a>
+              <a href="#" class="btn btn-lg btn-default">Ik ben een <strong>werkgever</strong></a>
               <a href="#" class="btn btn-lg btn-default">Ik ben een <strong>werknemer</strong></a>
             </p>
           </div>

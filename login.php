@@ -21,6 +21,7 @@
 
         <!-- Custom JS -->
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
         <script type="text/javascript" src="js/custom.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,6 +40,8 @@
 
         if (isset($_POST['login-submit']))
         {
+            //change database password
+            $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","werknemers");
             $email = $Connect->link->real_escape_string($_POST['email']);
             $pass = $Connect->link->real_escape_string($_POST['password']);
             $query = "SELECT id, mail, pass FROM werknemers WHERE mail = '$email' AND pass = '$pass';";
@@ -52,18 +55,38 @@
                 if(isset($id))
                 {
                     session_start();
-                    echo "logged in";
                     $_SESSION['login'] = true;
                     $_SESSION['id'] = $id;
+                    $_SESSION['gebruiker'] = "werknemer";
                 }
                 else
                 {
-                    echo "log in failed";
+
+                    $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","bedrijven");
+                    $query = "SELECT id, mail, pass FROM bedrijven WHERE mail = '$email' AND pass = '$pass';";
+                    $result = $Connect->link->query($query);
+                    while($row = $result->fetch_array(MYSQLI_ASSOC))
+                    {
+                        $id = $row['id'];
+                    }
+
+                    if(isset($id))
+                    {
+                        session_start();
+                        $_SESSION['login'] = true;
+                        $_SESSION['id'] = $id;
+                        $_SESSION['gebruiker'] = "werkgever";
+
+                    }
+                    else
+                    {
+                        echo "login mislukt";
+                    }
                 }
             }
             else
             {
-                echo "log in failed";
+                echo "login mislukt";
             }
 
         }
@@ -77,7 +100,12 @@
 
             if($pass == $confirm)
             {
-                
+                $array = array("$phone", "$email", "$pass");
+                $Connect->Create($array);
+            }
+            else
+            {
+                echo "wachtwoorden komen niet overeen";
             }
         }
     ?>
@@ -129,15 +157,12 @@
     							<div class="col-lg-12">
                                     <!--Login-->
     								<form id="login-form" action="" method="post" role="form">
+                                        <div></div>
     									<div class="form-group">
     										<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email">
     									</div>
     									<div class="form-group">
     										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Wachtwoord">
-    									</div>
-    									<div class="form-group text-center">
-    										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-    										<label for="remember"> Onthoud mij</label>
     									</div>
     									<div class="form-group">
     										<div class="row">
@@ -150,7 +175,7 @@
     										<div class="row">
     											<div class="col-lg-12">
     												<div class="text-center">
-    													<a href="" tabindex="5" class="forgot-password">Wachtwoord vergeten?</a>
+    													<a href="forgot.php">Wachtwoord vergeten?</a>
     												</div>
     											</div>
     										</div>
@@ -180,7 +205,7 @@
     										</div>
     									</div>
     								</form>
-                                    <!--/Register-->
+                                    <!-- /Register -->
     							</div>
     						</div>
     					</div>
