@@ -10,22 +10,33 @@
     <meta name="author" content="">
 
     <title>Groningen werkt</title>
- <?php include 'menu.php' ;?>
-    <!-- Bootstrap Core CSS -->
+    
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="css/cover.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-   
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/battle.js"></script>
 </head>
 <body>
+  <div class="menu-wrapper">  
+      <div class="navbar-top">
+        <div class="toggle-btn-holder">
+          <div class="toggle-btn">
+          </div>
+        </div>
+        <div class="header-text-holder">
+          <div class="header-text">
+            Hier je titel!
+          </div>
+        </div>
+      </div>
+
+      <?php include 'menu.php' ;?>
+    
+    </div>
+    
+
 
     <div class="site-wrapper">
 
@@ -76,12 +87,4 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+</body>
