@@ -9,11 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<<<<<<< HEAD
     <title>Instellingen</title>
-=======
-    <title>Title</title>
->>>>>>> origin/master
     
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -31,20 +27,12 @@
         </div>
         <div class="header-text-holder">
           <div class="header-text">
-<<<<<<< HEAD
             Instellingen
-=======
-            Hier je titel!
->>>>>>> origin/master
           </div>
         </div>
       </div>
 
-<<<<<<< HEAD
       <?php include 'menu.php'; ?>
-=======
-      <?php include 'menu.php' ;?>
->>>>>>> origin/master
     
     </div>
     <div class='margin-top'></div>
@@ -52,7 +40,6 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-8">
-<<<<<<< HEAD
           <?php
             require('classes.php');
 
@@ -117,13 +104,60 @@
               array_push($arrayWnemer_comp, $rowWnemer_comp['comp_id']);
             }
             ?>
-            <form action='' method='post'>
-              <h2>Account Instellingen</h2>
-              <label>Telefoonnummer</label><input type='text' name='tel' value='<?php echo $rowAccountSettings['tel']; ?>'/><br />
-              <label>E-mail</label><input type='text' name='mail' value='<?php echo $rowAccountSettings['mail']; ?>'/><br />
-              <label>Wachtwoord</label><input type='password' name='pass' value='<?php echo $rowAccountSettings['pass']; ?>'/><br />
-              <input type='submit' name='submitAccountSettings' value='Opslaan'/>
+
+            <form class="form-horizontal" method='post'>
+            <fieldset>
+
+            <!-- Form Name -->
+            <legend>Account Instellingen</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="tel">Telefoonnummer</label>  
+              <div class="col-md-4">
+              <input id="tel" name="tel" type="text" placeholder="0643849203" class="form-control input-md" value='<?php echo $rowAccountSettings['tel']; ?>'>
+                
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="mail">E-mail</label>  
+              <div class="col-md-4">
+              <input id="mail" name="mail" type="text" placeholder="battleoftheschools@gmail.com" class="form-control input-md" value='<?php echo $rowAccountSettings['mail']; ?>'>
+                
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="pass">Wachtwoord</label>
+              <div class="col-md-4">
+                <input id="pass" name="pass" type="password" placeholder="Wachtwoord" class="form-control input-md" value='<?php echo $rowAccountSettings['pass']; ?>'>
+                
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="submitAccountSettings"></label>
+              <div class="col-md-4">
+                <button id="submitAccountSettings" name="submitAccountSettings" class="btn btn-primary">Opslaan</button>
+              </div>
+            </div>
+
+            </fieldset>
             </form>
+
+            <!-- <div class="form-group">
+              <form action='' method='post'>
+                <h2>Account Instellingen</h2>
+                <label>Telefoonnummer</label><input type='text' name='tel' value='<?php echo $rowAccountSettings['tel']; ?>'/><br />
+                <label>E-mail</label><input type='text' name='mail' value='<?php echo $rowAccountSettings['mail']; ?>'/><br />
+                <label>Wachtwoord</label><input type='password' name='pass' value='<?php echo $rowAccountSettings['pass']; ?>'/><br />
+                <input type='submit' name='submitAccountSettings' value='Opslaan'/>
+              </form>
+            </div> --> 
             <form action='' method='post'>
             <h2>Eigenschappen</h2>
               <?php
@@ -152,18 +186,8 @@
             ?>
             <input type='submit' name='submitEigenschappen' value='Opslaan'/>
           </form>
-=======
-        <!-- Content -->
->>>>>>> origin/master
         </div>
 
         <div class="col-sm-2"></div>
     </div>
-<<<<<<< HEAD
-=======
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
->>>>>>> origin/master
   </body>
