@@ -1,7 +1,10 @@
 /*
  * Globals
  */
-
+.navbar-top{
+  background-color: transparent;
+  height: 0;
+}
 /* Links */
 a,
 a:focus,
