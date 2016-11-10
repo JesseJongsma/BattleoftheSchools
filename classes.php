@@ -33,7 +33,7 @@ class database
 		
 		return $result;
 	}
-	function saveSettingsData($arraySaveData)
+	function saveEigenschappenData($arraySaveData)
 	{
 		global $conn;
 
@@ -48,5 +48,30 @@ class database
 				$conn->query($sqlSave);	
 			}
 		}	
+	}
+	function retrieveDataFromUser($tabelName, $wnemerID)
+	{
+		global $conn;
+		
+		$sql = "SELECT * FROM $tabelName WHERE id = $wnemerID";
+		$result = $conn->query($sql);
+		
+		return $result;		
+	}
+	function saveAccountSettingsData($arraySaveAccountSettingsData)
+	{
+		global $conn;
+		
+		$sqlSave = "UPDATE werknemers SET ";
+
+        foreach ($arraySaveAccountSettingsData as $key => $value) 
+        {
+    		$sqlSave = $sqlSave . "$key = '$value', ";
+		}
+		
+		$sqlSave = substr($sqlSave, 0, -2);
+		$sqlSave = $sqlSave . " WHERE id = '1';";
+		//echo $sqlSave;
+		$conn->query($sqlSave);	
 	}
 }

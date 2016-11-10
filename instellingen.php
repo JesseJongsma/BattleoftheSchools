@@ -71,18 +71,29 @@
                     $arraySaveData[$rowCompetentiesSave['id']] = false;
                   }
                 }
-                $classDatabase->saveSettingsData($arraySaveData);
+                $classDatabase->saveEigenschappenData($arraySaveData);
+            }
+            elseif (isset($_POST['submitAccountSettings']))
+            {
+              $arraySaveAccountSettingsData = array();
+
+              $arraySaveAccountSettingsData['tel'] = $_POST['tel'];
+              $arraySaveAccountSettingsData['mail'] = $_POST['mail'];
+              $arraySaveAccountSettingsData['pass'] = $_POST['pass'];
+
+              $classDatabase->saveAccountSettingsData($arraySaveAccountSettingsData);
             }
 
-            // Hier maakt hij de checkboxen aan
-
+            // Data voor eigenschappen ophalen
             $resultCompetenties = $classDatabase->retrieveData("competenties");
-
             $countRowsCompetenties = $resultCompetenties->num_rows;
-
-
             $resultWnemer_comp = $classDatabase->retrieveCheckIfExists("wnemer_comp", "1");
             $countRowsWnemer_comp = $resultWnemer_comp->num_rows;
+
+
+            //Data voor account settings ophalen
+            $resultAccountSettings = $classDatabase->retrieveDataFromUser("werknemers", "1");
+            $rowAccountSettings = $resultAccountSettings->fetch_assoc();
 
             $arrayWnemer_comp = array();
 
@@ -94,7 +105,14 @@
             }
             ?>
             <form action='' method='post'>
-            <p><h2>Eigenschappen</h2></p>
+              <h2>Account Instellingen</h2>
+              <label>Telefoonnummer</label><input type='text' name='tel' value='<?php echo $rowAccountSettings['tel']; ?>'/><br />
+              <label>E-mail</label><input type='text' name='mail' value='<?php echo $rowAccountSettings['mail']; ?>'/><br />
+              <label>Wachtwoord</label><input type='password' name='pass' value='<?php echo $rowAccountSettings['pass']; ?>'/><br />
+              <input type='submit' name='submitAccountSettings' value='Opslaan'/>
+            </form>
+            <form action='' method='post'>
+            <h2>Eigenschappen</h2>
               <?php
               for($i = 1; $i <= $countRowsCompetenties; $i++)
               {
