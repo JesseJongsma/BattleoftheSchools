@@ -158,8 +158,19 @@
                 <input type='submit' name='submitAccountSettings' value='Opslaan'/>
               </form>
             </div> --> 
-            <form action='' method='post'>
-            <h2>Eigenschappen</h2>
+              <form action='' method='post' class="form-horizontal">
+                <fieldset>
+
+                <!-- Form Name -->
+                <legend>Eigenschappen</legend>
+
+                <!-- Multiple Checkboxes -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for=""></label>
+                  <div class="col-md-4">
+                  
+                  
+
               <?php
               for($i = 1; $i <= $countRowsCompetenties; $i++)
               {
@@ -173,18 +184,47 @@
                     $booleanGekozenCompetentie = true;
                   } 
                 }
+                ?>
+                
+                <?php
                 if ($booleanGekozenCompetentie == true)
                 {
-                  echo "<input type='checkbox' name='" . $rowCompetenties['id'] . "' checked>" . $rowCompetenties['beschrijving'] . "<br />";
+                  ?>
+                  <div class="checkbox">
+                    <label for="-0">
+                    <?php
+                      echo "<input type='checkbox' name='" . $rowCompetenties['id'] . "' checked>" . $rowCompetenties['beschrijving'] . "<br />";
+                    ?>
+                    </label>
+                  </div>
+                  <?php
                 }
                 else
                 {
-                  echo "<input type='checkbox' name='" . $rowCompetenties['id'] . "'>" . $rowCompetenties['beschrijving'] . "<br />";
+                  ?>
+                  <div class="checkbox">
+                    <label for="-0">
+                    <?php
+                      echo "<input type='checkbox' name='" . $rowCompetenties['id'] . "'>" . $rowCompetenties['beschrijving'] . "<br />";
+                    ?>
+                    </label>
+                  </div>
+                  <?php
                 }
               }
 
             ?>
-            <input type='submit' name='submitEigenschappen' value='Opslaan'/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="submitEigenschappen"></label>
+              <div class="col-md-4">
+                <button id="submitEigenschappen" name="submitEigenschappen" class="btn btn-primary">Opslaan</button>
+              </div>
+            </div>
+
+            </fieldset>
           </form>
         </div>
 

@@ -1,10 +1,7 @@
 /*
  * Globals
  */
-.navbar-top{
-  background-color: transparent;
-  height: 0;
-}
+
 /* Links */
 a,
 a:focus,
@@ -31,7 +28,7 @@ html,
 body {
   height: 100%;
   background-color: #333;
-  /*background: url(../images/groningen_bg.jpg) no-repeat center center fixed; */
+  background: url(../images/groningen_bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -119,16 +116,11 @@ body {
 
 .cover {
   padding: 0 20px;
-  background: rgba(29, 16, 113, 0.55);
-  padding: 1px;
-  border-radius: 6px;
+  background: rgba(249, 192, 127, 0.55);
 }
 .cover .btn-lg {
   padding: 10px 20px;
   font-weight: bold;
-  background-color: #F2AB15;
-  border: 0;
-  margin: 10px 40px 0px 40px;
 }
 
 
@@ -175,4 +167,3 @@ body {
     width: 700px;
   }
 }
-
