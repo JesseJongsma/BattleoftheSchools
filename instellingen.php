@@ -9,7 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+<<<<<<< HEAD
     <title>Instellingen</title>
+=======
+    <title>Title</title>
+>>>>>>> origin/master
     
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -27,12 +31,20 @@
         </div>
         <div class="header-text-holder">
           <div class="header-text">
+<<<<<<< HEAD
             Instellingen
+=======
+            Hier je titel!
+>>>>>>> origin/master
           </div>
         </div>
       </div>
 
+<<<<<<< HEAD
       <?php include 'menu.php'; ?>
+=======
+      <?php include 'menu.php' ;?>
+>>>>>>> origin/master
     
     </div>
     <div class='margin-top'></div>
@@ -40,6 +52,7 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-8">
+<<<<<<< HEAD
           <?php
             require('classes.php');
 
@@ -139,8 +152,18 @@
             ?>
             <input type='submit' name='submitEigenschappen' value='Opslaan'/>
           </form>
+=======
+        <!-- Content -->
+>>>>>>> origin/master
         </div>
 
         <div class="col-sm-2"></div>
     </div>
+<<<<<<< HEAD
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+>>>>>>> origin/master
   </body>

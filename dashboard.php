@@ -11,12 +11,10 @@
 
     <title>Title</title>
     
-    <link href="css/style.css" rel="stylesheet">
+ 
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/battle.js"></script>
 
@@ -45,6 +43,19 @@
 
         <div class="col-sm-8">
         <!-- Content -->
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Dashboard</h1>
+            <p class="lead">Kom direct in contact met werkgevers &amp; werknemers in heel Groningen</p>
+
+
+            <?php include 'dash.php' ;?>
+
+
+          </div>
+
+
+
         </div>
 
         <div class="col-sm-2"></div>
