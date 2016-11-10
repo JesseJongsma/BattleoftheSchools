@@ -65,8 +65,6 @@
           </div>
 
           <div class="moi"></div>
-          
-          <div class="page">
 
           <section id="info" class="page-scroll">
             <div class="page">
