@@ -14,9 +14,13 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/cover.css" rel="stylesheet">
+    <link href="css/scrolling-nav.css" rel="stylesheet">
 
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/battle.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+
 </head>
 <body>
   <div class="menu-wrapper">  
@@ -46,7 +50,7 @@
               <h3 class="masthead-brand">Trots op Groningen!</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
+                  <li class="page-scroll"><a href="#">Home</a></li>
                   <li><a class="page-scroll" href="#info">Informatie</a></li>
                 </ul>
               </nav>
@@ -70,7 +74,7 @@
 
 
 
-          <section id="info" class="">
+          <section id="info" class="page-scroll">
                   <div class="col-sm-6">
                     <h3> test Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
