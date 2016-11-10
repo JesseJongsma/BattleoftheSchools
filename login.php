@@ -41,10 +41,10 @@
         if (isset($_POST['login-submit']))
         {
             //change database password
-            $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","werknemers");
+            $Connect = new Connect("localhost","root","","bos","werknemers");
             $email = $Connect->link->real_escape_string($_POST['email']);
             $pass = $Connect->link->real_escape_string($_POST['password']);
-            $password = hash ("sha256", $pass);
+            $password = $pass; //hash ("sha256", $pass);
             $query = "SELECT id, mail, pass FROM werknemers WHERE mail = '$email' AND pass = '$pass';";
             if($result = $Connect->link->query($query))
             {
@@ -59,11 +59,12 @@
                     $_SESSION['login'] = true;
                     $_SESSION['id'] = $id;
                     $_SESSION['gebruiker'] = "werknemer";
+                    header("Location: /BattleoftheSchools/index.php");
                 }
                 else
                 {
 
-                    $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","bedrijven");
+                    $Connect = new Connect("localhost","root","","bos","bedrijven");
                     $query = "SELECT id, mail, pass FROM bedrijven WHERE mail = '$email' AND pass = '$pass';";
                     $result = $Connect->link->query($query);
                     while($row = $result->fetch_array(MYSQLI_ASSOC))
@@ -77,7 +78,7 @@
                         $_SESSION['login'] = true;
                         $_SESSION['id'] = $id;
                         $_SESSION['gebruiker'] = "werkgever";
-
+                        header("Location: /BattleoftheSchools/index.php");
                     }
                     else
                     {
