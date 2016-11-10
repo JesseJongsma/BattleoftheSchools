@@ -3,7 +3,7 @@
     <ul>
       <li><a href="home.php">Home</a></li>
       <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="#">Profiel</a></li>
+      <li><a href="#">Account</a></li>
       <li><a href="#">Instellingen</a></li>
     </ul>
   </div>

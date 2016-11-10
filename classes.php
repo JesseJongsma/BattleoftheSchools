@@ -5,7 +5,7 @@ class database
 	{
 		global $conn;
 
-		$conn = new mysqli("localhost", "root", "", "bos");
+		$conn = new mysqli("localhost", "root", "root", "bos");
 		if ($conn->connect_error) {
 		    ?>
 		    	<form action='Home.php' name="GoBackToHome" method='post'>

@@ -1,3 +1,4 @@
+<!-- database conectie -->
 <?php
 	/**
 	* fkn nioce script by Jesse Jongsme

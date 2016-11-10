@@ -41,7 +41,7 @@
         if (isset($_POST['login-submit']))
         {
             //change database password
-            $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","werknemers");
+            $Connect = new Connect("localhost","root","root","bos","werknemers");
             $email = $Connect->link->real_escape_string($_POST['email']);
             $pass = $Connect->link->real_escape_string($_POST['password']);
             $query = "SELECT id, mail, pass FROM werknemers WHERE mail = '$email' AND pass = '$pass';";
@@ -62,7 +62,7 @@
                 else
                 {
 
-                    $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","bedrijven");
+                    $Connect = new Connect("localhost","root","root","bos","bedrijven");
                     $query = "SELECT id, mail, pass FROM bedrijven WHERE mail = '$email' AND pass = '$pass';";
                     $result = $Connect->link->query($query);
                     while($row = $result->fetch_array(MYSQLI_ASSOC))
