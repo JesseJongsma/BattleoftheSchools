@@ -1,10 +1,14 @@
 <div class="navbar-left">
   <div class="content">
     <ul>
-      <li><a href="home.php">Home</a></li>
-      <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="#">Profiel</a></li>
-      <li><a href="#">Instellingen</a></li>
+      <li><a href="#">Goedgekeurd</a>
+        <ul>
+          <li class="info-item"><a href="#">sub menu test</a></li>
+          <li class="info-item"><a>sub menu test 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Bezig</a></li>
+      <li><a href="#">Afgekeurd</a></li>
     </ul>
   </div>
 </div>

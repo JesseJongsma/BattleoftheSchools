@@ -53,7 +53,7 @@ class database
 	{
 		global $conn;
 		
-		$sql = "SELECT * FROM $tabelName WHERE id = $wnemerID";
+		$sql = "SELECT * FROM $tabelName WHERE id = $wnemerID;";
 		$result = $conn->query($sql);
 		
 		return $result;		
@@ -73,5 +73,28 @@ class database
 		$sqlSave = $sqlSave . " WHERE id = '1';";
 		//echo $sqlSave;
 		$conn->query($sqlSave);	
+	}
+	function retrieveVacatureData($tabelName, $bedrijfsID)
+	{
+		global $conn;
+		
+		$sql = "SELECT * FROM $tabelName WHERE bedr_id = $bedrijfsID;";
+		$result = $conn->query($sql);
+		
+		return $result;		
+	}
+	function deleteVacatureData($tabelName, $verwijderID)
+	{
+		global $conn;
+		
+		$sql = "DELETE FROM $tabelName WHERE id = $verwijderID;";
+		if ($conn->query($sql))
+		{
+			return true;
+		}
+		else
+		{
+			return false;		
+		}
 	}
 }

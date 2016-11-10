@@ -15,11 +15,8 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/battle.js"></script>
-
-
 
 
 </head>
@@ -32,7 +29,7 @@
         </div>
         <div class="header-text-holder">
           <div class="header-text">
-            Dashboard
+            Hier je titel!
           </div>
         </div>
       </div>
