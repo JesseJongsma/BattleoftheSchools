@@ -22,6 +22,8 @@
       	  <label>Vul hier je motivatie in:</label>
       	  <textarea class="form-control" rows="10" id="comment"></textarea>
       	</div>
+      	
+      	<button type="submit" class="btn btn-default">Submit</button>
 
       </div>
       
