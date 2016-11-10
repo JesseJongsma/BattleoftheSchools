@@ -55,14 +55,14 @@
             if (isset($_POST['myVerwijderen']))
             {
               $succesfull = $classDatabase->deleteVacatureData("vacaturen", $_POST['verwijderID']);
-              if ($succesfull)
-              {
-                echo "Deleted";
-              }
-              else
-              {
-                echo "nothing";
-              }
+              // if ($succesfull)
+              // {
+              //   echo "Deleted";
+              // }
+              // else
+              // {
+              //   echo "nothing";
+              // }
             }
 
             $results = $classDatabase->retrieveVacatureData("vacaturen", "2");
@@ -97,7 +97,7 @@
                         <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
                       </td>
                       <td class="col-sm-1">
-                        <form action='' method='post'>
+                        <form action='' method='post' onsubmit="return confirm('Ben je zeker dat je deze vacature wil verwijderen?');">
                           <input type="hidden" name="verwijderID" value="<?php echo $row['id']; ?>">
                           <label for="myVerwijderen" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Verwijderen</label>
                           <input id="myVerwijderen" name="myVerwijderen" type="submit" value="" class="hidden" />
