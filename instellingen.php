@@ -17,6 +17,46 @@
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/battle.js"></script>
 
+    
+    <style>
+    /* Prevent the text contents of draggable elements from being selectable. */
+    [draggable] {
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      /* Required to make elements draggable in old WebKit */
+      -khtml-user-drag: element;
+      -webkit-user-drag: element;
+    }
+    .column {
+      height: 35px;
+      width: 100%;
+      float: left;
+      border: 2px solid #666666;
+      border-radius: 4px;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      
+      text-align: center;
+      cursor: move;
+    }
+    .column header {
+      color: black;
+      text-shadow: #000 0 1px;
+      box-shadow: 5px;
+      
+      
+      -webkit-border-top-left-radius: 10px;
+      -moz-border-radius-topleft: 10px;
+      -ms-border-radius-topleft: 10px;
+      border-top-left-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+      -ms-border-top-right-radius: 10px;
+      -moz-border-radius-topright: 10px;
+      border-top-right-radius: 10px;
+    }
+    </style>
 </head>
 <body>
     <div class="menu-wrapper">  
@@ -37,9 +77,9 @@
     </div>
     <div class='margin-top'></div>
     <div class="container-fluid">
-        <div class="col-sm-2"></div>
+        <!-- <div class="col-sm-2"></div> -->
 
-        <div class="col-sm-8">
+        <div class="col-sm-8 col-sm-offset-2">
           <?php
             require('classes.php');
 
@@ -162,15 +202,13 @@
                 <fieldset>
 
                 <!-- Form Name -->
-                <legend>Eigenschappen</legend>
+                <legend>Mogelijke eigenschappen</legend>
 
                 <!-- Multiple Checkboxes -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for=""></label>
-                  <div class="col-md-4">
-                  
-                  
-
+                  <!-- <label class="col-md-4 control-label" for=""></label> -->
+                  <div class="col-sm-6">
+              
               <?php
               for($i = 1; $i <= $countRowsCompetenties; $i++)
               {
@@ -183,17 +221,23 @@
                   {
                     $booleanGekozenCompetentie = true;
                   } 
-                }
+                } 
+                $halfCount = $countRowsCompetenties / 2 + 1;
+                if ($halfCount == $i)
+                {
                 ?>
+                </div>
+                <div class='col-sm-6'>
                 
                 <?php
+                }
                 if ($booleanGekozenCompetentie == true)
                 {
                   ?>
                   <div class="checkbox">
                     <label for="-0">
                     <?php
-                      echo "<input type='checkbox' name='" . $rowCompetenties['id'] . "' checked>" . $rowCompetenties['beschrijving'] . "<br />";
+                      echo "<input type='checkbox' class='single-checkbox' name='" . $rowCompetenties['id'] . "' checked>" . $rowCompetenties['beschrijving'] . "<br />";
                     ?>
                     </label>
                   </div>
@@ -205,7 +249,7 @@
                   <div class="checkbox">
                     <label for="-0">
                     <?php
-                      echo "<input type='checkbox' name='" . $rowCompetenties['id'] . "'>" . $rowCompetenties['beschrijving'] . "<br />";
+                      echo "<input type='checkbox' class='single-checkbox' name='" . $rowCompetenties['id'] . "'>" . $rowCompetenties['beschrijving'] . "<br />";
                     ?>
                     </label>
                   </div>
@@ -214,8 +258,11 @@
               }
 
             ?>
-              </div>
             </div>
+
+              </div>
+
+            
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="submitEigenschappen"></label>
@@ -226,8 +273,164 @@
 
             </fieldset>
           </form>
-        </div>
+          <legend>Geselecteerde eigenschappen</legend>
+          <?php
+            $resultCompetenties = $classDatabase->retrieveData("competenties");
+            $countRowsCompetenties = $resultCompetenties->num_rows;
+            $resultWnemer_comp = $classDatabase->retrieveCheckIfExists("wnemer_comp", "1");
+            $countRowsWnemer_comp = $resultWnemer_comp->num_rows;
 
-        <div class="col-sm-2"></div>
+            $arrayWnemer_comp = array();
+
+            for($i = 1; $i <= $countRowsCompetenties; $i++)
+            {
+              $rowWnemer_comp = $resultWnemer_comp->fetch_assoc();
+
+              array_push($arrayWnemer_comp, $rowWnemer_comp['comp_id']);
+            }
+            ?>
+            <form action='' method='post'>
+            <div id="columns" class="row">
+
+            <?php
+            for($i = 1; $i <= $countRowsCompetenties; $i++)
+            {
+              $rowCompetenties = $resultCompetenties->fetch_assoc();
+              $booleanGekozenCompetentie = false;
+
+              foreach ($arrayWnemer_comp as $Wnemer_comp) 
+              {
+                if ($rowCompetenties['id'] == $Wnemer_comp)
+                {
+                  $booleanGekozenCompetentie = true;
+                } 
+              } 
+        
+              
+              ?>
+              <?php
+              if ($booleanGekozenCompetentie == true)
+              {
+            ?>
+            <div class="column col-sm-1" name='<?php echo $rowCompetenties['id']; ?>' draggable="true"><header><?php echo $rowCompetenties['beschrijving']; ?></header></div>
+            <?php
+              }
+            }
+            ?>
+          </div>
+
+          <div class="form-group">
+              <label class="col-md-4 control-label" for="submitEigenschappen"></label>
+              <div class="col-md-4">
+                <button id="submitEigenschappen" name="submitEigenschappen" class="btn btn-primary">Opslaan</button>
+              </div>
+            </div>
+          </from>
+        </div> <!-- Afsluiting bootstrap col-sm-8 -->
+
+
+       
     </div>
+    <script>
+     $('input[type=checkbox]').change(function(e){
+   if ($('input[type=checkbox]:checked').length >= 8) {
+        $(this).prop('checked', false)
+        alert("allowed only 8");
+   }
+})
+     function handleDragStart(e) {
+       this.style.opacity = '0.4';  // this / e.target is the source node.
+     }
+
+     var cols = document.querySelectorAll('#columns .column');
+     [].forEach.call(cols, function(col) {
+       col.addEventListener('dragstart', handleDragStart, false);
+     });
+     function handleDragStart(e) {
+       this.style.opacity = '0.4';  // this / e.target is the source node.
+     }
+
+     function handleDragOver(e) {
+       if (e.preventDefault) {
+         e.preventDefault(); // Necessary. Allows us to drop.
+       }
+
+       e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+       return false;
+     }
+
+     function handleDragEnter(e) {
+       // this / e.target is the current hover target.
+       this.classList.add('over');
+     }
+
+     function handleDragLeave(e) {
+       this.classList.remove('over');  // this / e.target is previous target element.
+     }
+
+     var cols = document.querySelectorAll('#columns .column');
+     [].forEach.call(cols, function(col) {
+       col.addEventListener('dragstart', handleDragStart, false);
+       col.addEventListener('dragenter', handleDragEnter, false);
+       col.addEventListener('dragover', handleDragOver, false);
+       col.addEventListener('dragleave', handleDragLeave, false);
+     });
+     function handleDrop(e) {
+       // this / e.target is current target element.
+
+       if (e.stopPropagation) {
+         e.stopPropagation(); // stops the browser from redirecting.
+       }
+
+       // See the section on the DataTransfer object.
+
+       return false;
+     }
+
+     function handleDragEnd(e) {
+       // this/e.target is the source node.
+
+       [].forEach.call(cols, function (col) {
+         col.classList.remove('over');
+       });
+     }
+
+     var cols = document.querySelectorAll('#columns .column');
+     [].forEach.call(cols, function(col) {
+       col.addEventListener('dragstart', handleDragStart, false);
+       col.addEventListener('dragenter', handleDragEnter, false)
+       col.addEventListener('dragover', handleDragOver, false);
+       col.addEventListener('dragleave', handleDragLeave, false);
+       col.addEventListener('drop', handleDrop, false);
+       col.addEventListener('dragend', handleDragEnd, false);
+     });
+     var dragSrcEl = null;
+
+     function handleDragStart(e) {
+       // Target (this) element is the source node.
+       
+
+       dragSrcEl = this;
+
+       e.dataTransfer.effectAllowed = 'move';
+       e.dataTransfer.setData('text/html', this.innerHTML);
+     }
+     function handleDrop(e) {
+       // this/e.target is current target element.
+
+       if (e.stopPropagation) {
+         e.stopPropagation(); // Stops some browsers from redirecting.
+       }
+
+       // Don't do anything if dropping the same column we're dragging.
+       if (dragSrcEl != this) {
+         // Set the source column's HTML to the HTML of the column we dropped on.
+         dragSrcEl.innerHTML = this.innerHTML;
+         this.innerHTML = e.dataTransfer.getData('text/html');
+       }
+
+       return false;
+     }
+    </script>
   </body>

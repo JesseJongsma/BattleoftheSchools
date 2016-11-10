@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Title</title>
+    <title>Dashboard</title>
     
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -27,7 +27,7 @@
         </div>
         <div class="header-text-holder">
           <div class="header-text">
-            Hier je titel!
+            Dashboard
           </div>
         </div>
       </div>
