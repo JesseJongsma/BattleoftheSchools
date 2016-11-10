@@ -10,8 +10,8 @@
     <meta name="author" content="">
 
     <title>Groningen werkt</title>
- <?php include 'menu.php' ;?>
     <!-- Bootstrap Core CSS -->
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -26,6 +26,24 @@
    
 </head>
 <body>
+  <div class="menu-wrapper">  
+      <div class="navbar-top">
+        <div class="toggle-btn-holder">
+          <div class="toggle-btn">
+          </div>
+        </div>
+        <div class="header-text-holder">
+          <div class="header-text">
+            Hier je titel!
+          </div>
+        </div>
+      </div>
+
+      <?php include 'menu.php' ;?>
+    
+    </div>
+    
+
 
     <div class="site-wrapper">
 
