@@ -63,3 +63,64 @@ $(document).ready(function() {
     });
 
 });
+
+
+
+
+
+
+
+
+
+//Dashboard
+
+
+function openSubmenu2Middle(clickedSubmenu2, openedSubmenu2, submenu2MaxHeight) {
+    if (openedSubmenu2 === null) {
+        openedSubmenu2 = $(clickedSubmenu2);
+        openedSubmenu2.closest(openedSubmenu2).siblings('ul').css('height', submenu2MaxHeight);
+    }
+    else if (clickedSubmenu2.is(openedSubmenu2)) {
+        $(openedSubmenu2).closest(openedSubmenu2).siblings('ul').css('height', '0px');
+        openedSubmenu2 = null;
+    }
+    else {
+        $(openedSubmenu2).closest(openedSubmenu2).siblings('ul').css('height', '0px');
+        openedSubmenu2 = $(clickedSubmenu2);
+        openedSubmenu2.closest(clickedSubmenu2).siblings('ul').css('height', submenu2MaxHeight);
+    }
+    return openedSubmenu2;
+}
+
+function setHeights2(menuCollapsedHeight, openedSubmenu2) {
+    var submenu2MaxHeight = $('.navbar-middle').height() - $('.navbar-top').height() - menuCollapsedHeight;
+    if (openedSubmenu2 !== null) {
+       openedSubmenu2.closest(openedSubmenu2).siblings('ul').css('height', submenu2MaxHeight);
+    }
+    return submenu2MaxHeight;
+}
+
+$(document).ready(function() {
+    
+    window.toggled = 0;
+    var menuCollapsedHeight = $('.navbar-middle > .content > ul').height();
+    var submenu2MaxHeight = setHeights2(menuCollapsedHeight, null);
+    var openedSubmenu2 = null;
+
+    $('.toggle-btn').click(function(){
+        window.toggled = togglenavbarmiddle(toggled);
+    });
+
+    $('.overlay').click(function(){
+        window.toggled = togglenavbarmiddle(toggled);
+    });
+
+    $('.navbar-middle > .content > ul > li > a').click(function(){
+        openedSubmenu2 = openSubmenu2Middle($(this), openedSubmenu2, submenu2MaxHeight);
+    });
+
+    $(window).resize(function(){
+        submenu2MaxHeight = setHeights2(menuCollapsedHeight, openedSubmenu2, null);
+    });
+
+});
