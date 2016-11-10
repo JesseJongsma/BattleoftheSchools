@@ -67,13 +67,37 @@
             }
 
         }
-        echo $_SESSION['login'];
 
         if (isset($_POST['register-submit']))
         {
-            
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $pass = $_POST['password'];
+            $confirmPass = $_POST['confirm-password'];
+
+            // if()
+            // {
+
+            // }
         }
     ?>
+    <script type="text/javascript">
+        var password = document.getElementById("password").innerHTML;
+        var confirm = document.getElementById("confirm-password").innerHTML;
+        var message = document.getElementById("confirm-password");
+
+
+
+
+        if(password == confirm)
+        {
+            message.innerHTML = message.innerHTML + "YAya";
+        }
+        else
+        {
+            message.innerHTML = message.innerHTML + "ERROR";
+        }
+    </script>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -151,6 +175,7 @@
     								</form>
                                     <!--/Login-->
                                     <!--Register-->
+                                    <div id = "message"></div>
     								<form id="register-form" action="" method="post" role="form">
     									<div class="form-group">
     										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email adres" value="">
