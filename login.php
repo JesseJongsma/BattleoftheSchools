@@ -80,13 +80,13 @@
                     }
                     else
                     {
-                        echo "log in failed bv";
+                        echo "login mislukt";
                     }
                 }
             }
             else
             {
-                echo "log in failed";
+                echo "login mislukt";
             }
 
         }
