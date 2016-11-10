@@ -21,6 +21,7 @@
 
         <!-- Custom JS -->
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
         <script type="text/javascript" src="js/custom.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,8 +40,11 @@
 
         if (isset($_POST['login-submit']))
         {
+            //change database password
+            $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","werknemers");
             $email = $Connect->link->real_escape_string($_POST['email']);
             $pass = $Connect->link->real_escape_string($_POST['password']);
+            $password = hash ("sha256", $pass);
             $query = "SELECT id, mail, pass FROM werknemers WHERE mail = '$email' AND pass = '$pass';";
             if($result = $Connect->link->query($query))
             {
@@ -52,33 +56,40 @@
                 if(isset($id))
                 {
                     session_start();
-                    echo "logged in";
                     $_SESSION['login'] = true;
                     $_SESSION['id'] = $id;
+                    $_SESSION['gebruiker'] = "werknemer";
                 }
                 else
                 {
-                    echo "log in failed";
+
+                    $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","bedrijven");
+                    $query = "SELECT id, mail, pass FROM bedrijven WHERE mail = '$email' AND pass = '$pass';";
+                    $result = $Connect->link->query($query);
+                    while($row = $result->fetch_array(MYSQLI_ASSOC))
+                    {
+                        $id = $row['id'];
+                    }
+
+                    if(isset($id))
+                    {
+                        session_start();
+                        $_SESSION['login'] = true;
+                        $_SESSION['id'] = $id;
+                        $_SESSION['gebruiker'] = "werkgever";
+
+                    }
+                    else
+                    {
+                        echo "login mislukt";
+                    }
                 }
             }
             else
             {
-                echo "log in failed";
+                echo "login mislukt";
             }
 
-        }
-
-        if (isset($_POST['register-submit']))
-        {
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $pass = $_POST['password'];
-            $confirm = $_POST['confirm-password'];
-
-            if($pass == $confirm)
-            {
-                
-            }
         }
     ?>
 
@@ -119,7 +130,7 @@
     								<a href="#" class="active" id="login-form-link">Login</a>
     							</div>
     							<div class="col-xs-6">
-    								<a href="#" id="register-form-link">Registreer</a>
+    								<a href="register.php">Registreer</a>
     							</div>
     						</div>
     						<hr>
@@ -129,15 +140,12 @@
     							<div class="col-lg-12">
                                     <!--Login-->
     								<form id="login-form" action="" method="post" role="form">
+                                        <div></div>
     									<div class="form-group">
     										<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email">
     									</div>
     									<div class="form-group">
     										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Wachtwoord">
-    									</div>
-    									<div class="form-group text-center">
-    										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-    										<label for="remember"> Onthoud mij</label>
     									</div>
     									<div class="form-group">
     										<div class="row">
@@ -150,7 +158,7 @@
     										<div class="row">
     											<div class="col-lg-12">
     												<div class="text-center">
-    													<a href="" tabindex="5" class="forgot-password">Wachtwoord vergeten?</a>
+    													<a href="forgot.php">Wachtwoord vergeten?</a>
     												</div>
     											</div>
     										</div>
@@ -160,18 +168,23 @@
                                     <!--Register-->
                                     <div id = "message"></div>
     								<form id="register-form" action="" method="post" role="form">
-    									<div class="form-group">
-    										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email adres" value="">
-    									</div>
+
+                                    <!--email-->
                                         <div class="form-group">
-                                            <input type="number" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Telefoon nummer" value="">
+                                            <input type="email" name="email" id="email" tabindex="2" class="form-control" placeholder="email">
                                         </div>
+
+                                    <!--wachtwoord-->
     									<div class="form-group">
     										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Wachtwoord">
     									</div>
+
+                                    <!--confirm-->
     									<div class="form-group">
     										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Bevestig wachtwoord">
     									</div>
+
+                                    <!--submit-->
     									<div class="form-group">
     										<div class="row">
     											<div class="col-sm-6 col-sm-offset-3">
@@ -180,7 +193,64 @@
     										</div>
     									</div>
     								</form>
-                                    <!--/Register-->
+                                <!-- /Register -->
+                                <!-- Register -->
+                                    <form id="register-form" action="" method="post" role="form">
+                                    <!--naam-->
+                                        <div class="form-group">
+                                            <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Naam Bedrijf" value="">
+                                        </div>
+
+                                    <!--adres-->
+                                        <div class="form-group">
+                                            <input type="text" name="adres" id="adres" tabindex="1" class="form-control" placeholder="Adres" value="">
+                                        </div>
+
+                                    <!--huisnummer-->
+                                        <div class="form-group">
+                                            <input type="text" name="huisnummer" id="huisnummer" tabindex="1" class="form-control" placeholder="Huisnummer" value="">
+                                        </div>
+
+                                    <!--postcode-->
+                                        <div class="form-group">
+                                            <input type="text" name="postcode" id="postcode" tabindex="1" class="form-control" placeholder="Postcode" value="">
+                                        </div>
+
+                                    <!--woonplaats-->
+                                        <div class="form-group">
+                                            <input type="text" name="woonplaats" id="woonplaats" tabindex="1" class="form-control" placeholder="woonplaats" value="">
+                                        </div>
+
+                                    <!--beschrijving-->
+                                        <div class="form-group">
+                                            <textarea  class="form-control" rows="4" cols="50" name="beschrijving" id="beschrijving" placeholder="Korte omschrijving"></textarea>
+                                        </div>
+
+                                    <!--telefoon-->
+                                        <div class="form-group">
+                                            <input type="number" name="telefoon" id="telefoon" tabindex="1" class="form-control" placeholder="Telefoonnummer" value="">
+                                        </div>
+
+                                    <!--wachtwoord-->
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Wachtwoord">
+                                        </div>
+
+                                    <!--confirm-->
+                                        <div class="form-group">
+                                            <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Bevestig wachtwoord">
+                                        </div>
+
+                                    <!--submit-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3">
+                                                    <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Registreer nu!">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <!-- /Register -->
     							</div>
     						</div>
     					</div>

@@ -58,17 +58,17 @@
 				}
 				$count ++;
 
-				$sql .= "$value";
+				$sql .= "'$value'";
 			}
 
 			$query = "INSERT INTO $this->table VALUES ($sql);";
 			if($this->link->query($query))
 			{
-				echo "successful";
+				return true;
 			}
 			else
 			{
-				echo $query;
+				return false;
 			}
 		}
 
@@ -96,7 +96,7 @@
 	}
 	
 
-	$Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","werknemers");
+	
 	//print_r($Connect->Retrieve());
 	// $array = array("1212", "@.com", "swag");
 	// $Connect->Create($array);	
