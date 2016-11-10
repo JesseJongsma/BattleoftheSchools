@@ -2,7 +2,6 @@
 <html lang="nl">
 
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,6 +33,71 @@
     </head>
 
     <body>
+
+    <?php
+        require "connect.php";
+
+        if (isset($_POST['login-submit']))
+        {
+            $email = $Connect->link->real_escape_string($_POST['email']);
+            $pass = $Connect->link->real_escape_string($_POST['password']);
+            $query = "SELECT id, mail, pass FROM werknemers WHERE mail = '$email' AND pass = '$pass';";
+            if($result = $Connect->link->query($query))
+            {
+                while($row = $result->fetch_array(MYSQLI_ASSOC))
+                {
+                    $id = $row['id'];
+                }
+
+                if(isset($id))
+                {
+                    session_start();
+                    echo "logged in";
+                    $_SESSION['login'] = true;
+                    $_SESSION['id'] = $id;
+                }
+                else
+                {
+                    echo "log in failed";
+                }
+            }
+            else
+            {
+                echo "log in failed";
+            }
+
+        }
+
+        if (isset($_POST['register-submit']))
+        {
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $pass = $_POST['password'];
+            $confirmPass = $_POST['confirm-password'];
+
+            // if()
+            // {
+
+            // }
+        }
+    ?>
+    <script type="text/javascript">
+        var password = document.getElementById("password").innerHTML;
+        var confirm = document.getElementById("confirm-password").innerHTML;
+        var message = document.getElementById("confirm-password");
+
+
+
+
+        if(password == confirm)
+        {
+            message.innerHTML = message.innerHTML + "YAya";
+        }
+        else
+        {
+            message.innerHTML = message.innerHTML + "ERROR";
+        }
+    </script>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -80,9 +144,10 @@
     					<div class="panel-body">
     						<div class="row">
     							<div class="col-lg-12">
+                                    <!--Login-->
     								<form id="login-form" action="" method="post" role="form">
     									<div class="form-group">
-    										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Gebruikersnaam of Email">
+    										<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email">
     									</div>
     									<div class="form-group">
     										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Wachtwoord">
@@ -108,13 +173,16 @@
     										</div>
     									</div>
     								</form>
+                                    <!--/Login-->
+                                    <!--Register-->
+                                    <div id = "message"></div>
     								<form id="register-form" action="" method="post" role="form">
-    									<div class="form-group">
-    										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Gebruikersnaam" value="">
-    									</div>
     									<div class="form-group">
     										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email adres" value="">
     									</div>
+                                        <div class="form-group">
+                                            <input type="number" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Telefoon nummer" value="">
+                                        </div>
     									<div class="form-group">
     										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Wachtwoord">
     									</div>
@@ -129,6 +197,7 @@
     										</div>
     									</div>
     								</form>
+                                    <!--/Register-->
     							</div>
     						</div>
     					</div>
