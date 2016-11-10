@@ -38,7 +38,8 @@
     </div>
 
     <div class="container">
-
+      <div class="page">
+      
 
               <h3 class="center">Trots op Groningen!</h3>
               <nav>
@@ -61,15 +62,26 @@
               <a href="#" class="btn btn-lg btn-default">Ik ben een <strong>werknemer</strong></a>
             </p>
           </div>
-
+          </div>
 
           <div class="moi"></div>
           
+          <div class="page">
 
           <section id="info" class="page-scroll">
-
-                  <div class="col-sm-6 center" id="moi">
+            <div class="page">
+                  <div class="col-12 center">
                     <h1>Informatie</h1>
+                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
+                  </div>
+                  
+                  <div class="col-sm-6 col-6 center" id="moi">
+                    <h1>Werkgever informatie</h1>
                     <h3> test Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -105,18 +117,11 @@
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    test Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                      </h3>
                   </div>
 
-                  <div class="col-sm-6 center" id="moi">
-                    <h1>Iets anders</h1>
+                  <div class="col-sm-6 col-6 center" id="moi">
+                    <h1>Werknemer informatie</h1>
                     <h3> test Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -124,8 +129,10 @@
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </h3>
                   </div>
+                </div>
           </section>
 
+        
 
         </div>
 </body>

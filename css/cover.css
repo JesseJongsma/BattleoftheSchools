@@ -1,5 +1,5 @@
 body {
-  background: url(../images/groningen_bg.jpg) no-repeat center center fixed;
+  /*background: url(../images/groningen_bg.jpg) no-repeat center center fixed;*/
   background-size: cover;
   color: black;
 }
@@ -11,7 +11,7 @@ body {
 
 .cover {
   padding: 10px 20px;
-  background: rgba(29, 16, 113, 0.90);
+  /*background: rgba(29, 16, 113, 0.90);*/
   border-radius: 6px;
   }
 
@@ -30,9 +30,19 @@ body {
   text-align: center;
 }
 
-.btn{
+.btn {
   background-color: #F2AB15;
 }
-.moi{
+.moi {
   margin: 700px;
+}
+
+.page {
+  background: rgba(224, 224, 224, 0.90);
+  padding-top: 1px;
+  height: 100%;
+}
+
+.col-6 {
+  background: rgba(224, 224, 224, 0.90);
 }
