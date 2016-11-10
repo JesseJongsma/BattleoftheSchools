@@ -40,6 +40,7 @@
 
         if (isset($_POST['login-submit']))
         {
+            //change password
             $Connect = new Connect("localhost","root","NuclearHotdog94","battleoftheschools","werknemers");
             $email = $Connect->link->real_escape_string($_POST['email']);
             $pass = $Connect->link->real_escape_string($_POST['password']);
