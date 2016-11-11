@@ -19,6 +19,7 @@
         <link href="css/half-slider.css" rel="stylesheet">
         <link href="css/1-col-portfolio.css" rel="stylesheet">
         <link href="css/custom.css" rel="stylesheet">
+        <link href="css/cover.css" rel="stylesheet">
 
         <!-- Custom JS -->
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -36,30 +37,7 @@
 
     <body>
     <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.php">home</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="weergavemeerdere.php">Appartementen</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
-        </nav>
+       
         <div class="container">
         	<div class="row">
         	
@@ -82,7 +60,7 @@
                           </span>
                           <input class="form-control" placeholder="Email" name="email" type="email" required="">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" id="btn-olvidado">
+                        <button type="submit" class="btn btn-block" id="btn-olvidado">
                           Ga door
                         </button>
                         <p class="help-block">

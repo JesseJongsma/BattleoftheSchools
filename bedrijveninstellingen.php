@@ -13,6 +13,8 @@
     
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/cover.css" rel="stylesheet">
+
 
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/battle.js"></script>
@@ -27,7 +29,7 @@
         </div>
         <div class="header-text-holder">
           <div class="header-text">
-            Instellingen
+            
           </div>
         </div>
       </div>
@@ -35,6 +37,8 @@
       <?php include 'menu.php'; ?>
     
     </div>
+
+    
     <div class='margin-top'></div>
     <div class="container-fluid">
         <div class="col-sm-2"></div>
@@ -73,11 +77,13 @@
 
             ?>
 
+            <div class="page">
+
            <form action='' method='post' class="form-horizontal">
            <fieldset>
 
            <!-- Form Name -->
-           <legend>Account Settings</legend>
+           <legend class="center"><h2>Account Settings</h2></legend>
 
            <!-- Text input-->
            <div class="form-group">
@@ -164,13 +170,13 @@
            <div class="form-group">
              <label class="col-md-4 control-label" for=""></label>
              <div class="col-md-4">
-               <button id="submitBedrijvenAccountSettings" name="submitBedrijvenAccountSettings" class="btn btn-primary">Opslaan</button>
+               <button id="submitBedrijvenAccountSettings" name="submitBedrijvenAccountSettings" class="btn">Opslaan</button>
              </div>
            </div>
 
            </fieldset>
            </form>
-
+           </div>
        </div>
 
         <div class="col-sm-2"></div>

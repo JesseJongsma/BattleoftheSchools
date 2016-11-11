@@ -36,6 +36,8 @@ body {
 
 .btn {
   background-color: #F2AB15;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .moi {
   margin: 700px;
@@ -49,4 +51,8 @@ body {
 
 .col-6 {
   background: rgba(224, 224, 224, 0.80);
+}
+
+.nav > li > a:hover {
+  background-color: #F2AB15;
 }

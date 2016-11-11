@@ -13,6 +13,7 @@
     
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/cover.css" rel="stylesheet">
 
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/battle.js"></script>
@@ -27,7 +28,6 @@
         </div>
         <div class="header-text-holder">
           <div class="header-text">
-            Instellingen
           </div>
         </div>
       </div>
@@ -104,7 +104,8 @@
               array_push($arrayWnemer_comp, $rowWnemer_comp['comp_id']);
             }
             ?>
-
+            <div class="page">
+            
             <form class="form-horizontal" method='post'>
             <fieldset>
 
@@ -142,7 +143,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="submitAccountSettings"></label>
               <div class="col-md-4">
-                <button id="submitAccountSettings" name="submitAccountSettings" class="btn btn-primary">Opslaan</button>
+                <button id="submitAccountSettings" name="submitAccountSettings" class="btn">Opslaan</button>
               </div>
             </div>
 
@@ -220,12 +221,13 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="submitEigenschappen"></label>
               <div class="col-md-4">
-                <button id="submitEigenschappen" name="submitEigenschappen" class="btn btn-primary">Opslaan</button>
+                <button id="submitEigenschappen" name="submitEigenschappen" class="btn">Opslaan</button>
               </div>
             </div>
 
             </fieldset>
           </form>
+          </div>
         </div>
 
         <div class="col-sm-2"></div>

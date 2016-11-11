@@ -13,6 +13,7 @@
     
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/cover.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -27,7 +28,7 @@
         </div>
         <div class="header-text-holder">
           <div class="header-text">
-            Hier je titel!
+
           </div>
         </div>
       </div>
@@ -40,6 +41,8 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-8">
+        	<div class="page">
+        	
 		<?php
         class CMS {
 	
@@ -70,7 +73,7 @@
 			}
 			?>
 		<div class="container">
-		  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Goedgekeurd</button>
+		  <button type="button" class="btn" data-toggle="collapse" data-target="#demo">Goedgekeurd</button>
 		  <div id="demo" class="collapse">
 			<?php
 			if ($motiv == True) 
@@ -156,7 +159,7 @@
 		
 		
 		<div class="container">
-		  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo2">In behandeling</button>
+		  <button type="button" class="btn" data-toggle="collapse" data-target="#demo2">In behandeling</button>
 		  <div id="demo2" class="collapse">
 			<?php
 			if ($motiv == True) 
@@ -239,7 +242,7 @@
 			</div>
 		</div>
 		<div class="container">
-		  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo3">Geliked</button>
+		  <button type="button" class="btn" data-toggle="collapse" data-target="#demo3">Geliked</button>
 		  <div id="demo3" class="collapse">
 		  <?php
 			$vacaturen = array();
@@ -315,7 +318,7 @@
 			
 			
 			?>
-			
+			</div>
 			<!-- The Modal -->
 			<div id="myModal" class="modal">
 
