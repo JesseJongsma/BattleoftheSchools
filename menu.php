@@ -16,8 +16,6 @@
       <li><a href="index.php">Home</a></li>
       <li><a href="">Matching</a></li>
       <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="#">Account</a></li>
-      <li><a href="#">Instellingen</a></li>
       <?php
         if ($userBoolean)
         {

@@ -1,5 +1,3 @@
-<!-- database connectie gegevens -->
-
 <?php
 $servername = "localhost";
 $username = "root";
